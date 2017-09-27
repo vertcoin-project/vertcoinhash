@@ -1,0 +1,20 @@
+{
+  "name": "vertcoinhash",
+  "version": "1.0.0",
+  "description": "Node.js hash functions for Vertcoin",
+  "main": "vertcoinhash",
+  "license": "MIT",
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/vertcoin/vertcoinhash.git"
+  },
+  "dependencies": {
+    "nan": "latest",
+    "bindings": "latest",
+    "node-gyp": "latest"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "gypfile": true
+}
