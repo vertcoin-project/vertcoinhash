@@ -4,9 +4,9 @@
   "description": "Node.js hash functions for Vertcoin",
   "main": "vertcoinhash",
   "license": "MIT",
-  "repository" : { 
-    "type" : "git", 
-    "url" : "https://github.com/vertcoin/vertcoinhash.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vertcoin/vertcoinhash.git"
   },
   "dependencies": {
     "nan": "latest",
