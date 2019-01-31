@@ -33,6 +33,28 @@ void SumLyra2REv2(const Nan::FunctionCallbackInfo<Value>& args) {
   args.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+void SumLyra2REv3(const Nan::FunctionCallbackInfo<Value>& args) {
+ 
+  if(args.Length() < 1) {
+    Nan::ThrowTypeError("1 argument expected");
+    return;
+  }  
+
+  Local<Object> target = args[0]->ToObject();
+
+  if(!node::Buffer::HasInstance(target)) {
+    Nan::ThrowTypeError("Function expects buffer as input");
+    return;
+  }
+
+  char* input = node::Buffer::Data(target);
+  char* output = new char[32];
+
+  lyra2re3_hash(input, output);
+  
+  args.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
 void SumLyra2RE(const Nan::FunctionCallbackInfo<Value>& args) {
  
   if(args.Length() < 1) {
@@ -78,6 +100,8 @@ void SumScryptN(const Nan::FunctionCallbackInfo<Value>& args) {
 }
 
 void Init(v8::Local<v8::Object> exports) {
+  exports->Set(Nan::New("SumLyra2REv3").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(SumLyra2REv3)->GetFunction());
   exports->Set(Nan::New("SumLyra2REv2").ToLocalChecked(),
                Nan::New<v8::FunctionTemplate>(SumLyra2REv2)->GetFunction());
   exports->Set(Nan::New("SumLyra2RE").ToLocalChecked(),
